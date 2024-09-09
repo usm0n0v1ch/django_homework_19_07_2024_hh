@@ -1,0 +1,42 @@
+{% extends 'app/layouts/base.html' %}
+{% load static %}
+
+{% block title %}Vacancy detail{% endblock %}
+
+{% block content %}
+    <div class="vacancy_details">
+        <div class="vacancy_detail">
+            <h3>{{ vacancy.title }}</h3>
+            <p>Salary: {{ vacancy.salary }}$</p>
+            <p>Company: {{ vacancy.company_name }}</p>
+            <p>Required skills: {{ vacancy.required_skills }}</p>
+            <p>Responsibilities: {{ vacancy.responsibilities }}</p>
+            <p>Address: {{ vacancy.address }}</p>
+
+            {% if not user.is_staff %}
+                {% if has_responded %}
+                    <button class="btn_respond" disabled>
+                        You have already responded
+                    </button>
+                {% else %}
+                    <form action="{% url 'respond_to_vacancy' vacancy.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn_respond" type="submit">
+                            Respond
+                        </button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if user.is_staff %}
+        <div class="back">
+            <a class="btn_back" href="{% url 'profile' %}">Back</a>
+        </div>
+    {% else %}
+        <div class="back">
+            <a class="btn_back" href="{% url 'vacancy_list' %}">Back</a>
+        </div>
+    {% endif %}
+{% endblock %}

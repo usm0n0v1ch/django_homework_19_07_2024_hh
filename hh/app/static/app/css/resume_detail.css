@@ -1,0 +1,22 @@
+
+
+
+
+.resume_detail_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+.resume_detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 12px;
+}

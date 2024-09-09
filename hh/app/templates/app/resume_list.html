@@ -1,0 +1,34 @@
+{% extends 'app/layouts/base.html' %}
+{% load static %}
+
+{% block title %}Your Vacancies and Responses{% endblock %}
+
+{% block content %}
+    <div class="vacancies_list_div" style="display: flex; justify-content: center; align-items: center;">
+        <div class="vacancies_list">
+            <h2>Your Vacancies</h2>
+
+            {% for vacancy in vacancies %}
+                <div class="vacancy">
+                    <h3>{{ vacancy.title }}</h3>
+                    <p>Company: {{ vacancy.company_name }}</p>
+                    <p>Salary: {{ vacancy.salary }}</p>
+
+                    <h4>Responses:</h4>
+
+                    <ul>
+                        {% for response in vacancy.responses.all %}
+                            <li>
+                                <a href="{% url 'resume_detail' response.resume.id %}" style="color:black;">
+                                    {{ response.resume.name }} {{ response.resume.surname }}'s Resume
+                                </a>
+                            </li>
+                        {% empty %}
+                            <li>No responses yet.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

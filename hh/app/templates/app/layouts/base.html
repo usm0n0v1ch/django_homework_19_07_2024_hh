@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'app\css\main.css' %}">
+    <link rel="stylesheet" href="{% static 'app\css\header.css' %}">
+    <link rel="stylesheet" href="{% static 'app\css\vacancy_list.css' %}">
+    <link rel="stylesheet" href="{% static 'app\css\vacancy_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'app\css\profile.css' %}">
+    <link rel="stylesheet" href="{% static 'app\css\resume_create.css' %}">
+    <link rel="stylesheet" href="{% static 'app\css\resume_detail.css' %}">
+</head>
+<body>
+{% include 'app\layouts\header.html' %}
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

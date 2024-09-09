@@ -1,0 +1,24 @@
+{% extends 'app/layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}Create resume{% endblock %}
+
+
+
+{% block content %}
+<div class="create_resume">
+
+    <form class="create_resume_form" method="POST">
+        <h2>Create resume</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn_create_resume" type="submit">Create</button>
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}

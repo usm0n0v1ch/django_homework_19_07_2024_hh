@@ -1,0 +1,29 @@
+{% extends 'app\layouts\base.html' %}
+{% load static %}
+
+{% block title %}Resume detail{% endblock %}
+
+
+{% block content %}
+    <div class="resume_detail_div">
+        <div class="resume_detail">
+            <h3>{{ resume.title }}</h3>
+            <p>Name:{{ resume.name }}</p>
+            <p>Surname:{{ resume.surname }}</p>
+            <p>Patronymic:{{ resume.patronymic }}</p>
+            <p>Date of birth:{{ resume.date_of_birth }}</p>
+            <p>Email:{{ resume.email }}</p>
+            <p>Skills:{{ resume.skills }}</p>
+            <p>Experience:{{ resume.experience }}</p>
+            <p>Education:{{ resume.education }}</p>
+        </div>
+        {% if user.is_staff %}
+    <div class="back"><a class="btn_back" href="{% url 'resume_list' %}">Back</a></div>
+        {% else %}
+    <div class="back"><a class="btn_back" href="{% url 'profile' %}">Back</a></div>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'app/layouts/base.html' %}
+{% load static %}
+{% block title %}Vacancy list{% endblock %}
+
+{% block content %}
+    <div class="vacancy_search">
+        <form method="get" action="{% url 'vacancy_list' %}">
+            <input class="input_src_vacancy" type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
+            <button class="btn_search_vacancy" type="submit">Search</button>
+        </form>
+    </div>
+    <div>
+        <a class="btn_add_resume" href="{% url 'resume_create' %}">
+            Add resume
+        </a>
+    </div>
+    <div class="all_vacancies">
+        {% for vacancy in vacancies %}
+            <div class="vacancy">
+                <h3>{{ vacancy.title }}</h3>
+                <p>{{ vacancy.salary }}$</p>
+                <p>{{ vacancy.company_name }}</p>
+                <a class="btn_more_details" href="{% url 'vacancy_detail' vacancy.id %}">
+                    More details
+                </a>
+                <div>
+                    {% if vacancy.id in user_responses %}
+                        <span>You have already responded</span>
+                    {% else %}
+                        <form action="{% url 'respond_to_vacancy' vacancy.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="btn_respond" type="submit">
+                                Respond
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

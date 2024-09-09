@@ -1,0 +1,78 @@
+{% extends 'app/layouts/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <div class="profile_page">
+        <div class="profile">
+            Vacancies
+        </div>
+        <div class="btn_add_resume_div">
+            <a class="btn_add_resume_profile" href="{% url 'vacancy_create' %}">
+                Add vacancy
+            </a>
+        </div>
+        <div class="back">
+            <a class="btn_back" href="{% url 'resume_list' %}">
+                Back
+            </a>
+        </div>
+
+        <div class="user_vacancy">
+            <div>
+                {% for vacancy in vacancies %}
+                     <div class="vacancy">
+                         <h3>{{ vacancy.title }}</h3>
+                         <div class="btn_more_details_resume_div">
+                             <a class="btn_more_details_resume" href="{% url 'vacancy_detail' vacancy.id %}">
+                                 More details
+                             </a>
+                         </div>
+                     </div>
+                {% empty %}
+                     <p>No vacancies available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="profile_page">
+        <div class="profile">
+            Resumes
+        </div>
+        <div class="btn_add_resume_div">
+            <a class="btn_add_resume_profile" href="{% url 'resume_create' %}">
+                Add resume
+            </a>
+        </div>
+        <div class="user_resume">
+            <div>
+                {% for resume in resumes %}
+                    <div class="resume">
+                        <h3>{{ resume.title }}</h3>
+                        <div class="btn_more_details_resume_div">
+                            <a class="btn_more_details_resume" href="{% url 'resume_detail' resume.id %}">
+                                More details
+                            </a>
+                        </div>
+                        <div class="btn_more_details_resume_div">
+                            <a class="btn_more_details_resume" href="{% url 'resume_edit' resume.id %}">
+                                Edit
+                            </a>
+                        </div>
+                        <div class="btn_more_details_resume_div" style="background: red;">
+                            <a class="btn_more_details_resume" href="{% url 'resume_delete' resume.id %}">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                {% empty %}
+                     <p>No resumes available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

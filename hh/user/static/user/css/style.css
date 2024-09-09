@@ -1,0 +1,74 @@
+/* auth.css */
+
+/* Общие стили для формы */
+.auth-form {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 40px;
+    padding-right: 60px;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+    font-size: 24px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555555;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.auth-form button {
+    width: 106%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+    background-color: #0056b3;
+}
+
+.auth-form .form-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-form .form-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.auth-form .form-footer a:hover {
+    text-decoration: underline;
+}
+
